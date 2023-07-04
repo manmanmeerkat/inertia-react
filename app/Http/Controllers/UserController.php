@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\User;
 
-class UseController extends Controller
+class UserController extends Controller
 {
     public function index(){
         return Inertia::render('User/Index',[

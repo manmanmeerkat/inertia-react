@@ -1,14 +1,9 @@
-import NavBar from '@/Components/NavBar';
-import { Link } from '@inertiajs/react';
-
+import Layout from '../Layouts/Layout';
 
 const About = () => {
-    return (
-      <>
-        <NavBar />
-        <h1>About</h1>
-      </>
-    );
-  };
-  
-  export default About;
+  return <h1>About</h1>
+};
+
+About.layout = (page) => <Layout children={page} />
+
+export default About;
