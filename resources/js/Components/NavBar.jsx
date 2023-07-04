@@ -15,7 +15,7 @@ const NavBar = () => {
             <Link href={route('about')} className={url === '/about' ? 'active' : ''}>About</Link>
             </li>
             <li>
-            <Link href={route('user')} className={url === '/user' ? 'active' : ''}>User</Link>
+            <Link href={route('user.index')} className={url === '/user' ? 'active' : ''}>User</Link>
             </li>
         </ul>
         </nav>

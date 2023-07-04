@@ -1,9 +1,23 @@
 import Layout from '../Layouts/Layout';
+import { Head } from '@inertiajs/react';
 
 const About = () => {
-  return <h1>About</h1>
+  return (
+  <>
+    <Head>
+      <title>Aboutページ</title>
+      <meta 
+        head-key="description"
+        name="description"
+        content="これはAboutページです" 
+      />
+      <meta head-key="keywords" name="keywords" content="About" />
+    </Head>
+    <h1>About</h1>
+  </>
+  );
 };
 
-About.layout = (page) => <Layout children={page} />
+About.layout = (page) => <Layout children={page} />;
 
 export default About;

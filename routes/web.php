@@ -46,6 +46,6 @@ Route::get('/about', function () {
     return Inertia::render('About');
   })->name('about');
 
-Route::get('/user', [UserController::class, 'index'])->name('user');
+Route::resource('/user', UserController::class);
 
 require __DIR__.'/auth.php';
