@@ -21,9 +21,21 @@ class UserController extends Controller
         return Inertia::render('User/Create');
     }
 
-    public function store()
+    public function store(Request $request)
     {
-            User::create(request()->all());
+
+        $validated = $request->validate([
+            'name' => ['required', 'max:50'],
+            'password' => ['required', 'max:50'],
+            'email' => ['required', 'max:50', 'email'],
+        ]);
+
+        if($request->avatar){
+            $file_name = $request->file('avatar')->getClientOriginalName();
+            $request->file('avatar')->storeAs('public',$file_name);
+            $validated['avatar_file_path'] = '/storage/'.$file_name;
+        }
+            User::create($validated);
 
         return redirect()->route('user.index');
     }

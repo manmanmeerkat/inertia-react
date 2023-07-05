@@ -1,27 +1,19 @@
 import Layout from "@/Layouts/Layout";
-import { Head } from "@inertiajs/react";
+import { Head, useForm } from "@inertiajs/react";
 import { useState } from "react";
 import { router } from '@inertiajs/react'
 
 const Create = () => {
-    const [values, setValues] = useState({
+   const { data, setData, post, errors, processing } = useForm({
         name: '',
         email: '',
         password: '',
+        avatar: '',
     });
 
-    function handleChange(e) {
-        const key = e.target.id;
-        const value = e.target.value;
-        setValues((values) => ({
-            ...values,
-            [key]:value,
-        }));
-    }
-
-    function handleSubmit(e) {
+    function onSubmit(e) {
         e.preventDefault();
-        router.post('/user', values);
+        post('/user');
     }
 
     return (
@@ -29,30 +21,39 @@ const Create = () => {
             <Head title="ユーザーの登録"></Head>
             <h1>ユーザーの登録</h1>
             <div>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={onSubmit}>
                 <div>
                     <label htmlFor="name">名前:</label>
-                    <input id="name" value={values.name} onChange={handleChange} />
+                    <input id="name" value={data.name} onChange={(e) => setData('name', e.target.value)} />
+                    {errors.name && <div>{errors.name}</div>}
                 </div>
                 <div>
                     <label htmlFor="email">メールアドレス:</label>
                     <input 
                         id="email" 
-                        value={values.email} 
-                        onChange={handleChange} 
-                    />
+                        value={data.email} 
+                        onChange={(e) => setData('email', e.target.value)} />
+                        {errors.name && <div>{errors.name}</div>}
                 </div>
 
                 <div>
                     <label htmlFor="password">パスワード:</label>
                     <input 
                         id="password"
-                        value={values.password}
-                        onChange={handleChange}
+                        value={data.password}
+                        onChange={(e) => setData('password', e.target.value)}
                         type="password"
                     />
+                    {errors.password && <div>{errors.password}</div>}
                 </div>
-                <button type="submit">Submit</button>
+                <div>
+                    <label htmlFor="avatar">画像:</label>
+                    <input type="file" onChange={(e) => setData("avatar", e.target.files[0]) } />
+                    {errors.avatar &&
+                    <div>{errors.avatar}</div>
+                    }
+                </div>
+                <button type="submit" disabled={processing}>登録</button>
             </form>
           </div>
         </>
