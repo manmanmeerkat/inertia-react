@@ -1,7 +1,8 @@
 import Layout from '../Layouts/Layout';
-import { Head } from '@inertiajs/react';
+import { Head,usePage } from '@inertiajs/react';
 
 const About = () => {
+  const { appName } = usePage().props;
   return (
   <>
     <Head>
@@ -13,7 +14,7 @@ const About = () => {
       />
       <meta head-key="keywords" name="keywords" content="About" />
     </Head>
-    <h1>About</h1>
+    <h1>About | {appName}</h1>
   </>
   );
 };

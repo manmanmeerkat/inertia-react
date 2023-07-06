@@ -37,6 +37,8 @@ class UserController extends Controller
         }
             User::create($validated);
 
+            $request->session()->flash('message','ユーザーの作成が完了しました');
+
         return redirect()->route('user.index');
     }
 }

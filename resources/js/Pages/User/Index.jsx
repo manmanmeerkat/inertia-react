@@ -1,12 +1,16 @@
 import NavBar from "@/Components/NavBar";
 import Layout from "@/Layouts/Layout";
-import { Link } from "@inertiajs/react";
+import { Link,usePage } from "@inertiajs/react";
 
 
   const Index = (props) => {
+    const { flash } = usePage().props;
     return(
       <>
     <h1>ユーザ一覧</h1>
+    {flash.message && (
+      <div style={{ color: 'red', fontWeight: 'bold' }}>{flash.message}</div>
+    )}
     <div>
       <Link href={route("user.create")} as="button" type="button">
         ユーザー登録

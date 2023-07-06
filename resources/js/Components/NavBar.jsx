@@ -2,7 +2,7 @@ import { Link } from '@inertiajs/react';
 import { usePage } from '@inertiajs/react';
 import './NavBar.css';
 
-const NavBar = () => {
+const NavBar = (props) => {
   const { url } = usePage();
   return (
     <>
@@ -17,6 +17,7 @@ const NavBar = () => {
             <li>
             <Link href={route('user.index')} className={url === '/user' ? 'active' : ''}>User</Link>
             </li>
+            <li>{props.appName}</li>
         </ul>
         </nav>
     </>

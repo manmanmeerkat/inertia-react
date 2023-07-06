@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
       <meta head-key="keywords" name="keywords" content="My App" />
     </Head>
     <header>
-        <h1 style={{ textAlign: 'center' }}>Logo</h1>
+        <h1 style={{ textAlign: 'center' }}>{children.props.appName}</h1>
       <NavBar />
     </header>
       <main>{children}</main>
